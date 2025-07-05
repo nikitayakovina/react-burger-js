@@ -2,6 +2,7 @@ import {
   Button,
   ConstructorElement,
   CurrencyIcon,
+  DragIcon,
 } from '@krgaa/react-developer-burger-ui-components';
 
 import styles from './burger-constructor.module.css';
@@ -11,10 +12,10 @@ export const BurgerConstructor = ({ ingredients }) => {
   const lastElement = ingredients[ingredients.length - 1];
 
   return (
-    <section className={`${styles.constructor}`}>
+    <section className={`${styles.constructor} ml-10 pr-4 mb-10`}>
       {firstElement ? (
         <ConstructorElement
-          extraClass="mb-2"
+          extraClass="mb-2 ml-8"
           type="top"
           key={firstElement._id}
           text={`${firstElement.name} (верх)`}
@@ -23,22 +24,24 @@ export const BurgerConstructor = ({ ingredients }) => {
           isLocked={true}
         ></ConstructorElement>
       ) : null}
-      <div className={styles.constructor_list}>
+      <div className={`${styles.constructor_list}`}>
         {ingredients
           .filter((ingredient) => ingredient.type !== 'bun')
           .map((ingredient) => (
-            <ConstructorElement
-              extraClass="mt-2 mb-2"
-              key={ingredient._id}
-              text={ingredient.name}
-              price={ingredient.price}
-              thumbnail={ingredient.image}
-            ></ConstructorElement>
+            <div className={styles.item} key={ingredient._id}>
+              <DragIcon type="primary" className="mr-2" />
+              <ConstructorElement
+                extraClass="mt-2 mb-2"
+                text={ingredient.name}
+                price={ingredient.price}
+                thumbnail={ingredient.image}
+              ></ConstructorElement>
+            </div>
           ))}
       </div>
       {lastElement ? (
         <ConstructorElement
-          extraClass="mt-2"
+          extraClass="mt-2 ml-8"
           type="bottom"
           key={lastElement._id}
           text={`${lastElement.name} (низ)`}
@@ -47,12 +50,12 @@ export const BurgerConstructor = ({ ingredients }) => {
           isLocked={true}
         ></ConstructorElement>
       ) : null}
-      <div className={`${styles.order} mt-5`}>
-        <div className={`${styles.price} mr-5`}>
+      <div className={`${styles.order} mt-10 pr-4`}>
+        <div className={`${styles.price} mr-10`}>
           <p className="text text_type_digits-medium mr-2">610</p>
           <CurrencyIcon type="primary"></CurrencyIcon>
         </div>
-        <Button type="primary" size="small">
+        <Button type="primary" size="medium" htmlType="button">
           Оформить заказ
         </Button>
       </div>

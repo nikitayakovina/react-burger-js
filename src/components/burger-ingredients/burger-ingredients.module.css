@@ -15,7 +15,6 @@
 
 .ingredients {
   width: 600px;
-  height: 912px;
   overflow: hidden auto;
 }
 
@@ -30,5 +29,5 @@
 .ingredients_cards {
   display: flex;
   flex-wrap: wrap;
-  width: inherit;
+  justify-content: space-between;
 }

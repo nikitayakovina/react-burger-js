@@ -9,7 +9,7 @@ export const BurgerIngredients = ({ ingredients }) => {
   const mains = ingredients.filter((ingredient) => ingredient.type === 'main');
 
   return (
-    <section className={styles.burger_ingredients}>
+    <section className={`${styles.burger_ingredients} mb-10`}>
       <nav>
         <ul className={styles.menu}>
           <Tab
