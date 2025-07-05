@@ -12,7 +12,7 @@ export const BurgerConstructor = ({ ingredients }) => {
   const lastElement = ingredients[ingredients.length - 1];
 
   return (
-    <section className={`${styles.constructor} ml-10 pr-4 mb-10`}>
+    <section className={`${styles.burgerConstructor} ml-10 pr-4 mb-10`}>
       {firstElement ? (
         <ConstructorElement
           extraClass="mb-2 ml-8"
@@ -24,7 +24,7 @@ export const BurgerConstructor = ({ ingredients }) => {
           isLocked={true}
         ></ConstructorElement>
       ) : null}
-      <div className={`${styles.constructor_list}`}>
+      <div className={`${styles.burgerConstructor_list}`}>
         {ingredients
           .filter((ingredient) => ingredient.type !== 'bun')
           .map((ingredient) => (

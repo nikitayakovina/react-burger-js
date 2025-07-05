@@ -1,11 +1,11 @@
-.constructor {
+.burgerConstructor {
   display: flex;
   flex-direction: column;
   width: 600px;
   padding-bottom: 20px;
 }
 
-.constructor_list {
+.burgerConstructor_list {
   overflow: auto;
 }
 
