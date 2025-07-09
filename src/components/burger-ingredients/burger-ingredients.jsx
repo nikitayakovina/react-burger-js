@@ -1,6 +1,7 @@
 import { Tab } from '@krgaa/react-developer-burger-ui-components';
 
 import { Ingredient } from '@components/burger-ingredients/ingredient/ingredient.jsx';
+import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 import styles from './burger-ingredients.module.css';
 
@@ -61,4 +62,8 @@ export const BurgerIngredients = ({ ingredients }) => {
       </main>
     </section>
   );
+};
+
+BurgerIngredients.propTypes = {
+  ingredients: ingredientPropTypes,
 };

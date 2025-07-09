@@ -1,6 +1,8 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import { Modal } from '@components/modal/modal.jsx';
+import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 import styles from './ingredient-details.module.css';
 
@@ -52,4 +54,14 @@ export const IngredientDetails = ({ ingredient, onClose }) => {
       </div>
     </Modal>
   );
+};
+
+IngredientDetails.propTypes = {
+  ingredient: ingredientPropTypes,
+  onClose: PropTypes.func.isRequired,
+};
+CaloricContent.propTypes = {
+  description: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  className: PropTypes.string,
 };

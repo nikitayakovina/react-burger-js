@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import doneImage from '../../../public/done.svg';
 import { Modal } from '@components/modal/modal.jsx';
 
@@ -21,4 +23,7 @@ export const OrderDetails = ({ onClose }) => {
       </div>
     </Modal>
   );
+};
+OrderDetails.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };

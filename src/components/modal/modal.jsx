@@ -1,4 +1,5 @@
 import { CloseIcon } from '@krgaa/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -46,4 +47,10 @@ export const Modal = ({ header, children, onClose }) => {
   );
 
   return ReactDOM.createPortal(modalContent, modalElement);
+};
+
+Modal.propTypes = {
+  header: PropTypes.string,
+  children: PropTypes.arrayOf(PropTypes.element),
+  onClose: PropTypes.func.isRequired,
 };

@@ -7,6 +7,7 @@ import {
 import { useState } from 'react';
 
 import { OrderDetails } from '@components/order-details/order-details.jsx';
+import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 import styles from './burger-constructor.module.css';
 
@@ -71,4 +72,8 @@ export const BurgerConstructor = ({ ingredients }) => {
       {isOpenModal && <OrderDetails onClose={() => setOpenModal(false)} />}
     </section>
   );
+};
+
+BurgerConstructor.propTypes = {
+  ingredients: ingredientPropTypes,
 };

@@ -1,8 +1,10 @@
 import { CurrencyIcon } from '@krgaa/react-developer-burger-ui-components';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import { IngredientDetails } from '@components/ingredient-details/ingredient-details.jsx';
+import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 import styles from './ingredient.module.css';
 
@@ -25,4 +27,9 @@ export const Ingredient = ({ ingredient, className }) => {
       )}
     </div>
   );
+};
+
+Ingredient.PropTypes = {
+  ingredient: ingredientPropTypes,
+  className: PropTypes.string,
 };
