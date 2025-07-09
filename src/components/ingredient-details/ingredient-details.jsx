@@ -4,7 +4,7 @@ import { Modal } from '@components/modal/modal.jsx';
 
 import styles from './ingredient-details.module.css';
 
-const Kbzhu = ({ description, value, className }) => {
+const CaloricContent = ({ description, value, className }) => {
   const classList = classNames(className, styles.detail);
 
   return (
@@ -32,14 +32,22 @@ export const IngredientDetails = ({ ingredient, onClose }) => {
           {ingredient.name}
         </div>
         <div className={`${styles.details} mb-15`}>
-          <Kbzhu
+          <CaloricContent
             className="mr-5"
             description="Калории,ккал"
             value={ingredient.calories}
           />
-          <Kbzhu className="mr-5" description="Белки, г" value={ingredient.proteins} />
-          <Kbzhu className="mr-5" description="Жиры, г" value={ingredient.fat} />
-          <Kbzhu description="Углеводы, г" value={ingredient.carbohydrates} />
+          <CaloricContent
+            className="mr-5"
+            description="Белки, г"
+            value={ingredient.proteins}
+          />
+          <CaloricContent
+            className="mr-5"
+            description="Жиры, г"
+            value={ingredient.fat}
+          />
+          <CaloricContent description="Углеводы, г" value={ingredient.carbohydrates} />
         </div>
       </div>
     </Modal>
