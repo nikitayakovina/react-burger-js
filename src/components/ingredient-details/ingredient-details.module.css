@@ -1,0 +1,22 @@
+.container {
+  width: 520px;
+}
+
+.preview {
+  width: inherit;
+  height: 240px;
+}
+
+.name {
+  text-align: center;
+}
+
+.details {
+  display: flex;
+  max-width: 516px;
+}
+
+.detail {
+  justify-items: center;
+  width: 120px;
+}

@@ -4,12 +4,16 @@ import {
   CurrencyIcon,
   DragIcon,
 } from '@krgaa/react-developer-burger-ui-components';
+import { useState } from 'react';
+
+import { OrderDetails } from '@components/order-details/order-details.jsx';
 
 import styles from './burger-constructor.module.css';
 
 export const BurgerConstructor = ({ ingredients }) => {
   const firstElement = ingredients[0];
   const lastElement = ingredients[ingredients.length - 1];
+  const [isOpenModal, setOpenModal] = useState(false);
 
   return (
     <section className={`${styles.burgerConstructor} ml-10 pr-4 mb-10`}>
@@ -55,10 +59,16 @@ export const BurgerConstructor = ({ ingredients }) => {
           <p className="text text_type_digits-medium mr-2">610</p>
           <CurrencyIcon type="primary"></CurrencyIcon>
         </div>
-        <Button type="primary" size="medium" htmlType="button">
+        <Button
+          type="primary"
+          size="medium"
+          htmlType="button"
+          onClick={() => setOpenModal(true)}
+        >
           Оформить заказ
         </Button>
       </div>
+      {isOpenModal && <OrderDetails onClose={() => setOpenModal(false)} />}
     </section>
   );
 };
