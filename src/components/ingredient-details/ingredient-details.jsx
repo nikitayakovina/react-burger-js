@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { Modal } from '@components/modal/modal.jsx';
 import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 import styles from './ingredient-details.module.css';
@@ -21,44 +20,33 @@ const CaloricContent = ({ description, value, className }) => {
   );
 };
 
-export const IngredientDetails = ({ ingredient, onClose }) => {
+export const IngredientDetails = ({ ingredient }) => {
   return (
-    <Modal header="Детали ингридиента" onClose={onClose}>
-      <div className={styles.container}>
-        <img
-          className={styles.preview}
-          src={ingredient.image}
-          alt="Превью ингредиента"
-        />
-        <div className={`${styles.name} text text_type_main-medium mt-4 mb-8`}>
-          {ingredient.name}
-        </div>
-        <div className={`${styles.details} mb-15`}>
-          <CaloricContent
-            className="mr-5"
-            description="Калории,ккал"
-            value={ingredient.calories}
-          />
-          <CaloricContent
-            className="mr-5"
-            description="Белки, г"
-            value={ingredient.proteins}
-          />
-          <CaloricContent
-            className="mr-5"
-            description="Жиры, г"
-            value={ingredient.fat}
-          />
-          <CaloricContent description="Углеводы, г" value={ingredient.carbohydrates} />
-        </div>
+    <div className={styles.container}>
+      <img className={styles.preview} src={ingredient.image} alt="Превью ингредиента" />
+      <div className={`${styles.name} text text_type_main-medium mt-4 mb-8`}>
+        {ingredient.name}
       </div>
-    </Modal>
+      <div className={`${styles.details} mb-15`}>
+        <CaloricContent
+          className="mr-5"
+          description="Калории,ккал"
+          value={ingredient.calories}
+        />
+        <CaloricContent
+          className="mr-5"
+          description="Белки, г"
+          value={ingredient.proteins}
+        />
+        <CaloricContent className="mr-5" description="Жиры, г" value={ingredient.fat} />
+        <CaloricContent description="Углеводы, г" value={ingredient.carbohydrates} />
+      </div>
+    </div>
   );
 };
 
 IngredientDetails.propTypes = {
   ingredient: ingredientPropTypes,
-  onClose: PropTypes.func.isRequired,
 };
 CaloricContent.propTypes = {
   description: PropTypes.string.isRequired,

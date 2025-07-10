@@ -6,11 +6,11 @@ import {
 } from '@krgaa/react-developer-burger-ui-components';
 import { useState } from 'react';
 
+import { Modal } from '@components/modal/modal.jsx';
 import { OrderDetails } from '@components/order-details/order-details.jsx';
 import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 import styles from './burger-constructor.module.css';
-
 export const BurgerConstructor = ({ ingredients }) => {
   const firstElement = ingredients[0];
   const [isOpenModal, setOpenModal] = useState(false);
@@ -68,7 +68,11 @@ export const BurgerConstructor = ({ ingredients }) => {
           Оформить заказ
         </Button>
       </div>
-      {isOpenModal && <OrderDetails onClose={() => setOpenModal(false)} />}
+      {isOpenModal && (
+        <Modal onClose={() => setOpenModal(false)}>
+          <OrderDetails />
+        </Modal>
+      )}
     </section>
   );
 };

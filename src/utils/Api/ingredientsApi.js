@@ -1,9 +1,9 @@
-import { API_URL } from '@/config/apiConfig.js';
+import { apiUrl } from '@/config/apiConfig.js';
 
-export const IngredientsApi = () => {
-  const ENDPOINT = '/api/ingredients';
+export const ingredientsApi = () => {
+  const endPoint = '/api/ingredients';
 
-  return fetch(`${API_URL}${ENDPOINT}`)
+  return fetch(`${apiUrl}${endPoint}`)
     .then((res) => {
       if (res.ok) {
         return Promise.resolve(res.json());
