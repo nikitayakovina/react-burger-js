@@ -1,0 +1,22 @@
+.ingredient {
+  justify-items: center;
+  max-width: 272px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.ingredient_preview {
+  max-width: 240px;
+}
+
+.ingredient_price {
+  display: flex;
+  align-items: center;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}

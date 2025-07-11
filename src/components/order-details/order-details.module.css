@@ -1,0 +1,8 @@
+.orderContainer {
+  justify-items: center;
+  width: 520px;
+}
+
+.preview {
+  display: block;
+}

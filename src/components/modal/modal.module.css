@@ -1,0 +1,30 @@
+.modalWrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalInner {
+  z-index: 9999;
+  flex-direction: column;
+  justify-items: center;
+  width: 720px;
+  background: #1c1c21;
+  border-radius: 40px;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header {
+  min-width: 600px;
+}
+
+.closeIcon {
+  cursor: pointer;
+}

@@ -1,7 +1,25 @@
-.burger_constructor {
+.burgerConstructor {
   display: flex;
   flex-direction: column;
   width: 600px;
   padding-bottom: 20px;
-  color: var(--text-primary-color);
+}
+
+.burgerConstructor_list {
+  overflow: auto;
+}
+
+.order {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  align-items: center;
 }
