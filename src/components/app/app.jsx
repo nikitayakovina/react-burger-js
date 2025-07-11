@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { AppHeader } from '@components/app-header/app-header';
 import { BurgerConstructor } from '@components/burger-contructor/burger-constructor';
 import { BurgerIngredients } from '@components/burger-ingredients/burger-ingredients';
-import { ingredientsApi } from '@utils/Api/ingredientsApi.js';
+import { fetchIngredients } from '@utils/Api/fetchIngredients.js';
 
 import styles from './app.module.css';
 
@@ -11,7 +11,7 @@ export const App = () => {
   const [ingredients, setIngredients] = useState(null);
 
   useEffect(() => {
-    ingredientsApi()
+    fetchIngredients()
       .then((data) => {
         setIngredients(data.data);
       })

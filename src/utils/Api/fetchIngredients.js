@@ -1,6 +1,6 @@
 import { apiUrl } from '@/config/apiConfig.js';
 
-export const ingredientsApi = () => {
+export const fetchIngredients = () => {
   const endPoint = '/api/ingredients';
 
   return fetch(`${apiUrl}${endPoint}`)
