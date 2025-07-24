@@ -16,7 +16,6 @@ import { CLEAR_ORDER, sendOrder } from '../../services/actions/order.js';
 import { Ingredient } from '@components/burger-contructor/ingredient/ingredient.jsx';
 import { Modal } from '@components/modal/modal.jsx';
 import { OrderDetails } from '@components/order-details/order-details.jsx';
-import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 import styles from './burger-constructor.module.css';
 export const BurgerConstructor = () => {
@@ -134,8 +133,4 @@ export const BurgerConstructor = () => {
       )}
     </section>
   );
-};
-
-BurgerConstructor.propTypes = {
-  ingredients: ingredientPropTypes,
 };

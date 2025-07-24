@@ -1,7 +1,7 @@
 import {
-  FETCH_INGREDIENTS_START,
   FETCH_INGREDIENTS_SUCCESS,
-  FETCH_INGREDIENTS_FAILURE,
+  FETCH_INGREDIENTS_REQUEST,
+  FETCH_INGREDIENTS_ERROR,
 } from '../actions/ingredients';
 
 const initialState = {
@@ -12,11 +12,11 @@ const initialState = {
 
 export const ingredientsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_INGREDIENTS_START:
+    case FETCH_INGREDIENTS_REQUEST:
       return { ...state, loading: true, error: null };
     case FETCH_INGREDIENTS_SUCCESS:
       return { ...state, loading: false, items: action.data };
-    case FETCH_INGREDIENTS_FAILURE:
+    case FETCH_INGREDIENTS_ERROR:
       return { ...state, loading: false, error: action.data, items: initialState.items };
     default:
       return state;

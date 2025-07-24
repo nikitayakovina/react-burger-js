@@ -2,6 +2,7 @@ import {
   ConstructorElement,
   DragIcon,
 } from '@krgaa/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch } from 'react-redux';
@@ -10,12 +11,13 @@ import {
   REMOVE_INGREDIENT,
   SORT_INGREDIENT,
 } from '../../../services/actions/burgerConstructor.js';
+import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 export const Ingredient = ({ ingredient, index }) => {
   const dispatch = useDispatch();
   const ingredientRef = useRef(null);
-  const handleClose = (ingredient) => {
-    dispatch({ type: REMOVE_INGREDIENT, id: ingredient._id });
+  const handleClose = () => {
+    dispatch({ type: REMOVE_INGREDIENT, index });
   };
   const [, drag] = useDrag({
     type: 'sort',
@@ -43,4 +45,8 @@ export const Ingredient = ({ ingredient, index }) => {
       ></ConstructorElement>
     </div>
   );
+};
+Ingredient.propTypes = {
+  ingredient: ingredientPropTypes,
+  index: PropTypes.number,
 };

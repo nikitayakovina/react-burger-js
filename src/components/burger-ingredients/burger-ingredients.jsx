@@ -7,7 +7,6 @@ import { SET_TAB } from '../../services/actions/tabs.js';
 import { Ingredient } from '@components/burger-ingredients/ingredient/ingredient.jsx';
 import { IngredientDetails } from '@components/ingredient-details/ingredient-details.jsx';
 import { Modal } from '@components/modal/modal.jsx';
-import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
 import styles from './burger-ingredients.module.css';
 
@@ -125,8 +124,4 @@ export const BurgerIngredients = () => {
       </main>
     </section>
   );
-};
-
-BurgerIngredients.propTypes = {
-  ingredients: ingredientPropTypes,
 };

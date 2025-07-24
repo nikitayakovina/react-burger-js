@@ -38,4 +38,5 @@ export const Ingredient = ({ ingredient, className, count }) => {
 Ingredient.PropTypes = {
   ingredient: ingredientPropTypes,
   className: PropTypes.string,
+  count: PropTypes.number,
 };
