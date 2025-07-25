@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import {
   ADD_INGREDIENT,
   REMOVE_INGREDIENT,
@@ -15,7 +17,10 @@ const initialState = {
 export const burgerConstructorReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_INGREDIENT:
-      return { ...state, ingredients: [...state.ingredients, action.item] };
+      return {
+        ...state,
+        ingredients: [...state.ingredients, { ...action.item, uniqueId: uuid() }],
+      };
     case REMOVE_INGREDIENT:
       return {
         ...state,

@@ -1,4 +1,4 @@
-import { Tab } from '@krgaa/react-developer-burger-ui-components';
+import { Preloader, Tab } from '@krgaa/react-developer-burger-ui-components';
 import { useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +11,7 @@ import { Modal } from '@components/modal/modal.jsx';
 import styles from './burger-ingredients.module.css';
 
 export const BurgerIngredients = () => {
-  const { items } = useSelector((state) => state.ingredients);
+  const { items, loading } = useSelector((state) => state.ingredients);
   const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
   const { tab } = useSelector((state) => state.tabs);
   const buns = items.filter((ingredient) => ingredient.type === 'bun');
@@ -90,38 +90,42 @@ export const BurgerIngredients = () => {
           ))}
         </ul>
       </nav>
-      <main className={`${styles.ingredients}`} onScroll={onScroll} ref={containerRef}>
-        <div className={styles.ingredients_buns}>
-          <h2 ref={bunRef}>Булки</h2>
-          <div className={`${styles.ingredients_cards} mt-6 ml-4 mr-4 mb-10`}>
-            {buns.map((bun) => (
-              <Ingredient
-                key={bun._id}
-                ingredient={bun}
-                count={count[bun._id]}
-              ></Ingredient>
-            ))}
+      {loading ? (
+        <Preloader />
+      ) : (
+        <main className={`${styles.ingredients}`} onScroll={onScroll} ref={containerRef}>
+          <div className={styles.ingredients_buns}>
+            <h2 ref={bunRef}>Булки</h2>
+            <div className={`${styles.ingredients_cards} mt-6 ml-4 mr-4 mb-10`}>
+              {buns.map((bun) => (
+                <Ingredient
+                  key={bun._id}
+                  ingredient={bun}
+                  count={count[bun._id]}
+                ></Ingredient>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className={styles.ingredients_mains}>
-          <h2 ref={mainRef}>Соусы</h2>
-          <div className={`${styles.ingredients_cards} mt-6 ml-4 mr-4`}>
-            {mains.map((main) => (
-              <Ingredient
-                className="mb-8"
-                key={main._id}
-                ingredient={main}
-                count={count[main._id]}
-              ></Ingredient>
-            ))}
+          <div className={styles.ingredients_mains}>
+            <h2 ref={mainRef}>Соусы</h2>
+            <div className={`${styles.ingredients_cards} mt-6 ml-4 mr-4`}>
+              {mains.map((main) => (
+                <Ingredient
+                  className="mb-8"
+                  key={main._id}
+                  ingredient={main}
+                  count={count[main._id]}
+                ></Ingredient>
+              ))}
+            </div>
           </div>
-        </div>
-        {ingredientDetails && (
-          <Modal header="Детали ингридиента" onClose={showModal}>
-            <IngredientDetails ingredient={ingredientDetails} />
-          </Modal>
-        )}
-      </main>
+          {ingredientDetails && (
+            <Modal header="Детали ингридиента" onClose={showModal}>
+              <IngredientDetails ingredient={ingredientDetails} />
+            </Modal>
+          )}
+        </main>
+      )}
     </section>
   );
 };
