@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   ADD_BUN,
-  ADD_INGREDIENT,
+  addIngredient,
   CLEAR_INGREDIENT,
 } from '../../services/actions/burgerConstructor.js';
 import { CLEAR_ORDER, sendOrder } from '../../services/actions/order.js';
@@ -38,7 +38,7 @@ export const BurgerConstructor = () => {
   const [, dropIngredient] = useDrop({
     accept: 'main',
     drop(item) {
-      dispatch({ type: ADD_INGREDIENT, item });
+      dispatch(addIngredient(item));
     },
   });
   const amount = useMemo(() => {
