@@ -1,4 +1,5 @@
 .ingredient {
+  position: relative;
   justify-items: center;
   max-width: 272px;
 
@@ -17,6 +18,14 @@
 }
 
 p {
+  margin: 0;
+  padding: 0;
+}
+
+.count {
+  position: absolute;
+  width: 32px;
+  height: 32px;
   margin: 0;
   padding: 0;
 }
