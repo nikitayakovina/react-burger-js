@@ -1,0 +1,21 @@
+.profileContainer {
+  display: flex;
+  width: 100%;
+  max-width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.profileWrapper {
+  max-width: 320px;
+}
+
+.list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.listItem {
+  align-content: center;
+  height: 64px;
+}

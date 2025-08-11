@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { ingredientPropTypes } from '@utils/PropTypes/ingredient.js';
 
@@ -7,6 +9,11 @@ import styles from './ingredient-details.module.css';
 
 const CaloricContent = ({ description, value, className }) => {
   const classList = classNames(className, styles.detail);
+  const { id } = useParams();
+
+  useEffect(() => {
+    console.log(id);
+  }, []);
 
   return (
     <div className={classList}>
