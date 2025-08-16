@@ -13,7 +13,7 @@ export const ForgotPasswordPage = () => {
     e.preventDefault();
     forgotPassword(email)
       .then(() => {
-        localStorage.setItem('forgotPassword', JSON.stringify(true));
+        localStorage.setItem('resetPassword', JSON.stringify(true));
         navigate('/reset-password', { replace: true });
       })
       .catch((error) => console.error(error));

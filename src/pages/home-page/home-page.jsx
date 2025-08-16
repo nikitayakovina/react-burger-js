@@ -1,9 +1,9 @@
 import { BurgerConstructor } from '@components/burger-contructor/burger-constructor.jsx';
 import { BurgerIngredients } from '@components/burger-ingredients/burger-ingredients.jsx';
 
-import styles from './main-page.module.css';
+import styles from './home-page.module.css';
 
-export const MainPage = () => {
+export const HomePage = () => {
   return (
     <>
       <h1 className={`${styles.title} text text_type_main-large mt-10 mb-5 pl-5`}>

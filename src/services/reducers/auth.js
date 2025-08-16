@@ -1,4 +1,6 @@
 import {
+  GET_USER_FAILURE,
+  GET_USER_SUCCESS,
   LOGIN_FAILURE,
   LOGIN_SUCCESS,
   LOGOUT_FAILURE,
@@ -12,6 +14,7 @@ import {
 
 const initialState = {
   user: null,
+  isAuthChecked: false,
   error: null,
 };
 
@@ -20,6 +23,12 @@ export const authReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
     case LOGOUT_SUCCESS:
     case REGISTER_SUCCESS:
+      return {
+        ...state,
+        user: action.user,
+        isAuthChecked: true,
+        error: null,
+      };
     case UPDATE_USER_SUCCESS:
       return {
         ...state,
@@ -42,6 +51,20 @@ export const authReducer = (state = initialState, action) => {
     case REFRESH_TOKEN_FAILURE:
       return {
         ...state,
+        user: null,
+        error: action.payload,
+      };
+    case GET_USER_SUCCESS:
+      return {
+        ...state,
+        isAuthChecked: true,
+        user: action.user,
+        error: action.payload,
+      };
+    case GET_USER_FAILURE:
+      return {
+        ...state,
+        isAuthChecked: true,
         user: null,
         error: action.payload,
       };

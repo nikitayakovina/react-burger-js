@@ -13,25 +13,20 @@ import { updateUser } from '@utils/Api/updateUser.js';
 import styles from './profile-settings-page.module.css';
 
 export const ProfileSettingsPage = () => {
-  const { auth } = useSelector((state) => state);
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const [change, setChange] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
   });
   const handleChange = (e) => {
+    setChange(true);
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
-
-  const hasChanges =
-    JSON.stringify(formData) !==
-    JSON.stringify({
-      name: auth?.user?.name || '',
-      email: auth?.user?.email || '',
-    });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,17 +39,18 @@ export const ProfileSettingsPage = () => {
 
   const handleCancel = (e) => {
     e.preventDefault();
-    setFormData(auth?.user ? auth.user : { name: '', email: '' });
+    setFormData(user ? user : { name: '', email: '' });
+    setChange(false);
   };
 
   useEffect(() => {
-    if (auth.user) {
+    if (user) {
       setFormData({
-        name: auth.user.name,
-        email: auth.user.email,
+        name: user.name,
+        email: user.email,
       });
     }
-  }, [auth]);
+  }, [user]);
   return (
     <form className="page-container-inner" onSubmit={handleSubmit}>
       <Input
@@ -72,10 +68,16 @@ export const ProfileSettingsPage = () => {
         value={formData.email || ''}
         onChange={handleChange}
       />
-      <PasswordInput extraClass="mb-6" name="password" icon="EditIcon" />
-      {hasChanges && (
+      <PasswordInput
+        extraClass="mb-6"
+        name="password"
+        icon="EditIcon"
+        value={formData.password || ''}
+        onChange={handleChange}
+      />
+      {change && (
         <div className={`${styles.actions} mt-5`}>
-          <Button type="primary" htmlType="reset" onClick={handleCancel}>
+          <Button type="secondary" htmlType="reset" onClick={handleCancel}>
             Отмена
           </Button>
           <Button type="primary" extraClass="ml-5" htmlType="submit">

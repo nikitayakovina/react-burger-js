@@ -20,6 +20,7 @@ export const ResetPasswordPage = () => {
     resetPassword(token, password)
       .then((res) => {
         if (res.success) {
+          localStorage.setItem('resetPassword', JSON.stringify(false));
           navigate('/login', { replace: true });
         }
       })

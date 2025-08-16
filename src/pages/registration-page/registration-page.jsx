@@ -6,7 +6,7 @@ import {
 } from '@krgaa/react-developer-burger-ui-components';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { REGISTER_FAILURE, REGISTER_SUCCESS } from '../../services/actions/auth.js';
 import { registerUser } from '@utils/Api/registerUser.js';
@@ -15,7 +15,6 @@ import { setCookie } from '@utils/cookie.js';
 import styles from './registration-page.module.css';
 
 export const RegistrationPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -37,11 +36,9 @@ export const RegistrationPage = () => {
           }
 
           dispatch({ type: REGISTER_SUCCESS, user: res.user });
-          navigate('/');
         }
       })
       .catch((error) => {
-        console.error(error);
         dispatch({ type: REGISTER_FAILURE, error });
       });
   };
