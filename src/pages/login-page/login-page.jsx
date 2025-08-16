@@ -14,14 +14,23 @@ import { setCookie } from '@utils/cookie.js';
 import styles from './login-page.module.css';
 
 export const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
   const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    loginUser(email, password)
+    loginUser(formData)
       .then((res) => {
         if (res.success) {
           const { accessToken, refreshToken } = {
@@ -45,34 +54,30 @@ export const LoginPage = () => {
   return (
     <section className={`${styles.loginPage} mb-10`}>
       <form onSubmit={handleSubmit}>
-        <div className={`${styles.header} text text_type_main-medium mb-6`}>Вход</div>
-        <main className={`${styles.content}`}>
+        <div className={`text text_type_main-medium mb-6`}>Вход</div>
+        <main>
           <EmailInput
             extraClass="mb-6"
             name="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
+            value={formData.email || ''}
           />
           <PasswordInput
             extraClass="mb-6"
             name="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
+            value={formData.password || ''}
           />
           <Button type="primary" extraClass="mb-20" htmlType="submit">
             Войти
           </Button>
         </main>
-        <div className={`${styles.footer}`}>
+        <div>
           <p className="text text_type_main-default text_color_inactive mb-4">
-            Вы — новый пользователь?{' '}
-            <Link className="page-link" to={'/register'}>
-              Зарегистрироваться
-            </Link>
+            Вы — новый пользователь? <Link to={'/register'}>Зарегистрироваться</Link>
           </p>
           <p className="text text_type_main-default text_color_inactive">
-            Забыли пароль?{' '}
-            <Link className="page-link" to={'/forgot-password'}>
-              Восстановить пароль
-            </Link>
+            Забыли пароль? <Link to={'/forgot-password'}>Восстановить пароль</Link>
           </p>
         </div>
       </form>

@@ -6,6 +6,6 @@ export const resetPassword = (token, password) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ password, token }),
+    body: JSON.stringify(token, password),
   });
 };

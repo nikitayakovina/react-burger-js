@@ -20,8 +20,9 @@ export const CustomNavLink = ({ to, icon: Icon, className, text }) => {
   );
 };
 
-NavLink.propTypes = {
-  header: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.element),
-  onClose: PropTypes.func.isRequired,
+CustomNavLink.propTypes = {
+  to: PropTypes.string,
+  className: PropTypes.string,
+  text: PropTypes.string,
+  icon: PropTypes.elementType.isRequired,
 };

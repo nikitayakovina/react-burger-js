@@ -16,13 +16,22 @@ import styles from './registration-page.module.css';
 
 export const RegistrationPage = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    name: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    registerUser(email, password, name)
+    registerUser(formData)
       .then((res) => {
         if (res.success) {
           const { accessToken, refreshToken } = {
@@ -51,17 +60,20 @@ export const RegistrationPage = () => {
             placeholder="Имя"
             extraClass="mb-6"
             name="name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={handleChange}
+            value={formData.name || ''}
           />
           <EmailInput
             extraClass="mb-6"
             name="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
+            value={formData.email || ''}
           />
           <PasswordInput
             extraClass="mb-6"
             name="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
+            value={formData.password || ''}
           />
           <Button type="primary" extraClass="mb-20" htmlType="submit">
             Зарегистрироваться

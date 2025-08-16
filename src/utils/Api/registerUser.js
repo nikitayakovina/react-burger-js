@@ -6,6 +6,6 @@ export const registerUser = (email, password, name) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, password, name }),
+    body: JSON.stringify(email, password, name),
   });
 };

@@ -12,12 +12,20 @@ import styles from './reset-password-page.module.css';
 
 export const ResetPasswordPage = () => {
   const navigate = useNavigate();
-  const [token, setToken] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    token: '',
+    password: '',
+  });
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    resetPassword(token, password)
+    resetPassword(formData)
       .then((res) => {
         if (res.success) {
           localStorage.setItem('resetPassword', JSON.stringify(false));
@@ -36,13 +44,15 @@ export const ResetPasswordPage = () => {
             placeholder="Введите новый пароль"
             name="password"
             extraClass="mb-6"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
+            value={formData.password || ''}
           />
           <Input
             placeholder="Введите код из письма"
             name="token"
             extraClass="mb-6"
-            onChange={(e) => setToken(e.target.value)}
+            onChange={handleChange}
+            value={formData.token || ''}
           />
           <Button type="primary" extraClass="mb-20" htmlType="submit">
             Сохранить

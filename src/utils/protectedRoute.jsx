@@ -1,4 +1,5 @@
 import { Preloader } from '@krgaa/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -32,3 +33,12 @@ export const OnlyUnAuth = ({ component }) => (
   <ProtectedRoute onlyUnAuth={true} component={component} />
 );
 export const OnlyAuth = ProtectedRoute;
+
+ProtectedRoute.propTypes = {
+  onlyUnAuth: PropTypes.bool,
+  component: PropTypes.element.isRequired,
+};
+
+OnlyUnAuth.propTypes = {
+  component: PropTypes.element.isRequired,
+};

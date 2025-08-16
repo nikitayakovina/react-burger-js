@@ -52,7 +52,7 @@ export const ProfileSettingsPage = () => {
     }
   }, [user]);
   return (
-    <form className="page-container-inner" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <Input
         extraClass="mb-6"
         name="name"
