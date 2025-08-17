@@ -12,7 +12,7 @@ export const fetchIngredients = () => {
 
       dispatch({ type: FETCH_INGREDIENTS_SUCCESS, data: response.data });
     } catch (e) {
-      dispatch({ type: FETCH_INGREDIENTS_ERROR, data: e });
+      dispatch({ type: FETCH_INGREDIENTS_ERROR, payload: e.message });
     }
   };
 };

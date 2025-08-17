@@ -1,9 +1,6 @@
-import {
-  BurgerIcon,
-  ListIcon,
-  ProfileIcon,
-  Logo,
-} from '@krgaa/react-developer-burger-ui-components';
+import { BurgerIcon, ListIcon, Logo } from '@krgaa/react-developer-burger-ui-components';
+
+import { CustomNavLink } from '@components/custom-nav-link/custom-nav-link.jsx';
 
 import styles from './app-header.module.css';
 
@@ -12,23 +9,23 @@ export const AppHeader = () => {
     <header className={styles.header}>
       <nav className={`${styles.menu} p-4`}>
         <div className={styles.menu_part_left}>
-          {/* Тут должны быть ссылки, а не например кнопки или абзацы */}
-          <a href="/" className={`${styles.link} ${styles.link_active}`}>
-            <BurgerIcon type="primary" />
-            <p className="text text_type_main-default ml-2">Конструктор</p>
-          </a>
-          <a href="/feed" className={`${styles.link} ml-10`}>
-            <ListIcon type="secondary" />
-            <p className="text text_type_main-default ml-2">Лента заказов</p>
-          </a>
+          <CustomNavLink to={'/'} icon={BurgerIcon} text={'Конструктор'}></CustomNavLink>
+          <CustomNavLink
+            to={'/feed'}
+            icon={ListIcon}
+            text={'Лента заказов'}
+            className={'ml-10'}
+          ></CustomNavLink>
         </div>
         <div className={styles.logo}>
           <Logo />
         </div>
-        <a href="/profile" className={`${styles.link} ${styles.link_position_last}`}>
-          <ProfileIcon type="secondary" />
-          <p className="text text_type_main-default ml-2">Личный кабинет</p>
-        </a>
+        <CustomNavLink
+          to={'/profile'}
+          icon={ListIcon}
+          text={'Личный кабинет'}
+          className={styles.link_position_last}
+        ></CustomNavLink>
       </nav>
     </header>
   );

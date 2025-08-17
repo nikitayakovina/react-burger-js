@@ -7,6 +7,7 @@ import {
 import { useMemo } from 'react';
 import { useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   ADD_BUN,
@@ -21,8 +22,10 @@ import { OrderDetails } from '@components/order-details/order-details.jsx';
 import styles from './burger-constructor.module.css';
 export const BurgerConstructor = () => {
   const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
+  const { user } = useSelector((state) => state.auth);
   const { order, loading } = useSelector((state) => state.order);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [, dropBunUp] = useDrop({
     accept: 'bun',
     drop(item) {
@@ -51,7 +54,11 @@ export const BurgerConstructor = () => {
     return ingredientsAmount + bunAmount;
   }, [bun, ingredients, dispatch]);
   const createOrder = () => {
-    dispatch(sendOrder([...ingredients, bun, bun]));
+    if (!user) {
+      navigate('/login', { replace: true });
+    } else {
+      dispatch(sendOrder([...ingredients, bun, bun]));
+    }
   };
   const handleCloseModal = () => {
     dispatch({ type: CLEAR_ORDER });

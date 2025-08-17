@@ -2,11 +2,8 @@ import { Preloader, Tab } from '@krgaa/react-developer-burger-ui-components';
 import { useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { CLEAR_INGREDIENT_DETAILS } from '../../services/actions/ingredientDetails.js';
 import { SET_TAB } from '../../services/actions/tabs.js';
 import { Ingredient } from '@components/burger-ingredients/ingredient/ingredient.jsx';
-import { IngredientDetails } from '@components/ingredient-details/ingredient-details.jsx';
-import { Modal } from '@components/modal/modal.jsx';
 
 import styles from './burger-ingredients.module.css';
 
@@ -16,7 +13,6 @@ export const BurgerIngredients = () => {
   const { tab } = useSelector((state) => state.tabs);
   const buns = items.filter((ingredient) => ingredient.type === 'bun');
   const mains = items.filter((ingredient) => ingredient.type === 'main');
-  const ingredientDetails = useSelector((state) => state.ingredientDetails.ingredient);
   const dispatch = useDispatch();
   const containerRef = useRef(null);
   const bunRef = useRef(null);
@@ -47,9 +43,6 @@ export const BurgerIngredients = () => {
       },
     },
   ];
-  const showModal = () => {
-    dispatch({ type: CLEAR_INGREDIENT_DETAILS });
-  };
   const selectTab = (tab) => {
     dispatch({ type: SET_TAB, tab });
 
@@ -119,11 +112,6 @@ export const BurgerIngredients = () => {
               ))}
             </div>
           </div>
-          {ingredientDetails && (
-            <Modal header="Детали ингридиента" onClose={showModal}>
-              <IngredientDetails ingredient={ingredientDetails} />
-            </Modal>
-          )}
         </main>
       )}
     </section>
