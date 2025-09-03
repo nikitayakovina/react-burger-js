@@ -1,3 +1,3 @@
 import type { TIngredient } from '@/models/ingredient';
 
-export type TIngredientBurgerProps = TIngredient & { index: number };
+export type TIngredientBurgerProps = { ingredient: TIngredient; index: number };
