@@ -2,10 +2,10 @@
   position: relative;
   justify-items: center;
   max-width: 272px;
+}
 
-  &:hover {
-    cursor: pointer;
-  }
+.ingredient:hover {
+  cursor: pointer;
 }
 
 .ingredient_preview {
