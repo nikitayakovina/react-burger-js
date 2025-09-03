@@ -3,7 +3,13 @@ import {
   CLEAR_INGREDIENT_DETAILS,
 } from '../actions/ingredientDetails';
 
-const initialState = {
+import type { TIngredient } from '@/models/ingredient';
+
+type TInitialState = {
+  ingredient: TIngredient | null;
+};
+
+const initialState: TInitialState = {
   ingredient: null,
 };
 

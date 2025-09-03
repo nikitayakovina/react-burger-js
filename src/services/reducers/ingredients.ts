@@ -4,7 +4,15 @@ import {
   FETCH_INGREDIENTS_ERROR,
 } from '../actions/ingredients';
 
-const initialState = {
+import type { TIngredient } from '@/models/ingredient';
+
+type TInitialState = {
+  items: TIngredient[];
+  loading: boolean;
+  error: string | null;
+};
+
+const initialState: TInitialState = {
   items: [],
   loading: false,
   error: null,

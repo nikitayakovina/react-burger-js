@@ -1,6 +1,10 @@
 import { SET_TAB } from '../actions/tabs.js';
 
-const initialState = {
+type TInitialState = {
+  tab: 'bun' | 'main';
+};
+
+const initialState: TInitialState = {
   tab: 'bun',
 };
 

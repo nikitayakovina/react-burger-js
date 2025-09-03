@@ -4,6 +4,7 @@ import { useDrag } from 'react-dnd';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import type { TBurgerIngredientsProps } from '@/models/burger-ingredients';
+import type { TIngredient } from '@/models/ingredient';
 import type { FC } from 'react';
 
 import styles from './ingredient.module.css';
@@ -21,7 +22,7 @@ export const Ingredient: FC<TBurgerIngredientsProps> = ({
       state: { backgroundLocation: location },
     });
   };
-  const [, ref] = useDrag({
+  const [, ref] = useDrag<TIngredient, void, unknown>({
     type: ingredient.type,
     item: ingredient,
   });

@@ -5,7 +5,15 @@ import {
   CLEAR_ORDER,
 } from '../actions/order';
 
-const initialState = {
+import type { TOrder } from '@/models/order';
+
+type TInitialState = {
+  order: TOrder | null;
+  loading: boolean;
+  error: string | null;
+};
+
+const initialState: TInitialState = {
   order: null,
   loading: false,
   error: null,

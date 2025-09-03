@@ -13,20 +13,22 @@ import {
 
 import type { TIngredientBurgerProps } from '@/models/burger-constructor';
 import type { FC } from 'react';
-
+type TDragItem = {
+  index: number;
+};
 export const Ingredient: FC<TIngredientBurgerProps> = ({ ingredient, index }) => {
   const dispatch = useAppDispatch();
   const ingredientRef = useRef(null);
   const handleClose = (): void => {
     dispatch({ type: REMOVE_INGREDIENT, index });
   };
-  const [, drag] = useDrag({
+  const [, drag] = useDrag<TDragItem, void, unknown>({
     type: 'sort',
     item: { index },
   });
-  const [, drop] = useDrop({
+  const [, drop] = useDrop<TDragItem, void, unknown>({
     accept: 'sort',
-    drop(item) {
+    drop(item: TDragItem) {
       if (index !== item.index) {
         dispatch({ type: SORT_INGREDIENT, toIndex: index, fromIndex: item.index });
       }

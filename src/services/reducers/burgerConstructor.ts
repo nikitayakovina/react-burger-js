@@ -6,13 +6,21 @@ import {
   CLEAR_INGREDIENT,
 } from '../actions/burgerConstructor.js';
 
-const initialState = {
+import type { TIngredient } from '@/models/ingredient';
+
+type TInitialState = {
+  bun: TIngredient | null;
+  ingredients: TIngredient[];
+  amount: number;
+};
+
+const initialState: TInitialState = {
   bun: null,
   ingredients: [],
   amount: 0,
 };
 
-export const burgerConstructorReducer = (state = initialState, action) => {
+export const burgerConstructorReducer = (state = initialState, action: unknown) => {
   switch (action.type) {
     case ADD_INGREDIENT:
       return {

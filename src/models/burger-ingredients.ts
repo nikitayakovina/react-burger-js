@@ -1,6 +1,7 @@
 import type { TIngredient } from '@/models/ingredient';
 
-export type TBurgerIngredientsProps = TIngredient & {
+export type TBurgerIngredientsProps = {
+  ingredient: TIngredient;
   className: string[] | string;
   count: number;
 };

@@ -12,7 +12,15 @@ import {
   UPDATE_USER_SUCCESS,
 } from '../actions/auth.js';
 
-const initialState = {
+import type { TUser } from '@/models/user';
+
+type TInitialState = {
+  user: TUser | null;
+  isAuthChecked: boolean;
+  error: string | null;
+};
+
+const initialState: TInitialState = {
   user: null,
   isAuthChecked: false,
   error: null,
