@@ -22,6 +22,16 @@ import { OrderDetails } from '@components/order-details/order-details.js';
 
 import type { FC } from 'react';
 
+type TBunItem = {
+  index: number;
+  name: string;
+};
+
+type TIngredientItem = {
+  id: string;
+  name: string;
+};
+
 import styles from './burger-constructor.module.css';
 export const BurgerConstructor: FC = () => {
   const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
@@ -29,21 +39,21 @@ export const BurgerConstructor: FC = () => {
   const { order, loading } = useSelector((state) => state.order);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [, dropBunUp] = useDrop({
+  const [, dropBunUp] = useDrop<TBunItem, void, unknown>({
     accept: 'bun',
-    drop(item) {
+    drop(item: TBunItem) {
       dispatch({ type: ADD_BUN, item });
     },
   });
-  const [, dropBunDown] = useDrop({
+  const [, dropBunDown] = useDrop<TBunItem, void, unknown>({
     accept: 'bun',
-    drop(item) {
+    drop(item: TBunItem) {
       dispatch({ type: ADD_BUN, item });
     },
   });
-  const [, dropIngredient] = useDrop({
+  const [, dropIngredient] = useDrop<TIngredientItem, void, unknown>({
     accept: 'main',
-    drop(item) {
+    drop(item: TIngredientItem) {
       dispatch(addIngredient(item));
     },
   });

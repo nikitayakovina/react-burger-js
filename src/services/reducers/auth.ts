@@ -26,7 +26,7 @@ const initialState: TInitialState = {
   error: null,
 };
 
-export const authReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action): TInitialState => {
   switch (action.type) {
     case LOGIN_SUCCESS:
     case LOGOUT_SUCCESS:

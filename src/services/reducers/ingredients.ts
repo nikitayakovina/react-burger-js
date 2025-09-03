@@ -18,7 +18,7 @@ const initialState: TInitialState = {
   error: null,
 };
 
-export const ingredientsReducer = (state = initialState, action) => {
+export const ingredientsReducer = (state = initialState, action): TInitialState => {
   switch (action.type) {
     case FETCH_INGREDIENTS_REQUEST:
       return { ...state, loading: true, error: null };

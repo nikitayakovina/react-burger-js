@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { SET_TAB } from '../../services/actions/tabs.js';
 import { Ingredient } from '@components/burger-ingredients/ingredient/ingredient.js';
 
+import type { TIngredient } from '@/models/ingredient';
 import type { FC } from 'react';
 
 import styles from './burger-ingredients.module.css';
@@ -21,8 +22,8 @@ export const BurgerIngredients: FC = () => {
   const { items, loading } = useSelector((state) => state.ingredients);
   const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
   const { tab } = useSelector((state) => state.tabs);
-  const buns = items.filter((ingredient) => ingredient.type === 'bun');
-  const mains = items.filter((ingredient) => ingredient.type === 'main');
+  const buns: TIngredient[] = items.filter((ingredient) => ingredient.type === 'bun');
+  const mains: TIngredient[] = items.filter((ingredient) => ingredient.type === 'main');
   const dispatch = useAppDispatch();
   const containerRef = useRef<HTMLHeadingElement>(null!);
   const bunRef = useRef<HTMLHeadingElement>(null!);
@@ -53,7 +54,7 @@ export const BurgerIngredients: FC = () => {
       },
     },
   ];
-  const selectTab = (tab) => {
+  const selectTab = (tab: 'bun' | 'main' | 'sauce') => {
     dispatch({ type: SET_TAB, tab });
 
     if (tab === 'bun') {

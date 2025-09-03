@@ -20,7 +20,10 @@ const initialState: TInitialState = {
   amount: 0,
 };
 
-export const burgerConstructorReducer = (state = initialState, action: unknown) => {
+export const burgerConstructorReducer = (
+  state = initialState,
+  action
+): TInitialState => {
   switch (action.type) {
     case ADD_INGREDIENT:
       return {

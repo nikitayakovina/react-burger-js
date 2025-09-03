@@ -19,7 +19,7 @@ const initialState: TInitialState = {
   error: null,
 };
 
-export const orderReducer = (state = initialState, action) => {
+export const orderReducer = (state = initialState, action): TInitialState => {
   switch (action.type) {
     case ADD_ORDER_REQUEST:
       return { ...state, loading: true, error: null };

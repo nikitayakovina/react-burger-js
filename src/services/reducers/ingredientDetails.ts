@@ -13,7 +13,10 @@ const initialState: TInitialState = {
   ingredient: null,
 };
 
-export const ingredientDetailsReducer = (state = initialState, action) => {
+export const ingredientDetailsReducer = (
+  state = initialState,
+  action
+): TInitialState => {
   switch (action.type) {
     case SET_INGREDIENT_DETAILS:
       return { ...state, ingredient: action.ingredient };
