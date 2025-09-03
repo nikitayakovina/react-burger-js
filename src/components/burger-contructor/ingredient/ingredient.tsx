@@ -19,7 +19,7 @@ type TDragItem = {
 export const Ingredient: FC<TIngredientBurgerProps> = ({ ingredient, index }) => {
   const dispatch = useAppDispatch();
   const ingredientRef = useRef(null);
-  const handleClose = (): void => {
+  const handleClose = () => {
     dispatch({ type: REMOVE_INGREDIENT, index });
   };
   const [, drag] = useDrag<TDragItem, void, unknown>({

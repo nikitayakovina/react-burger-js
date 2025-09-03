@@ -19,7 +19,7 @@ export const Modal: FC<TModalProps> = ({ header, children, onClose }) => {
     [onClose]
   );
 
-  useEffect<void>(() => {
+  useEffect(() => {
     document.addEventListener('keydown', handleEscape);
 
     return () => {

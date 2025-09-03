@@ -56,14 +56,14 @@ export const BurgerConstructor: FC = () => {
 
     return ingredientsAmount + bunAmount;
   }, [bun, ingredients, dispatch]);
-  const createOrder = (): void => {
+  const createOrder = () => {
     if (!user) {
       navigate('/login', { replace: true });
     } else {
       dispatch(sendOrder([...ingredients, bun, bun]));
     }
   };
-  const handleCloseModal = (): void => {
+  const handleCloseModal = () => {
     dispatch({ type: CLEAR_ORDER });
     dispatch({ type: CLEAR_INGREDIENT });
   };

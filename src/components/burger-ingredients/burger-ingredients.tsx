@@ -32,7 +32,7 @@ export const BurgerIngredients: FC = () => {
       value: 'bun',
       active: tab === 'bun',
       text: 'Булки',
-      onClick: (): void => {
+      onClick: () => {
         selectTab('bun');
       },
     },
@@ -40,7 +40,7 @@ export const BurgerIngredients: FC = () => {
       value: 'main',
       active: tab === 'main',
       text: 'Начинки',
-      onClick: (): void => {
+      onClick: () => {
         selectTab('main');
       },
     },
@@ -48,12 +48,12 @@ export const BurgerIngredients: FC = () => {
       value: 'sauce',
       active: tab === 'sauce',
       text: 'Соусы',
-      onClick: (): void => {
+      onClick: () => {
         selectTab('sauce');
       },
     },
   ];
-  const selectTab = (tab): void => {
+  const selectTab = (tab) => {
     dispatch({ type: SET_TAB, tab });
 
     if (tab === 'bun') {
@@ -62,7 +62,7 @@ export const BurgerIngredients: FC = () => {
       mainRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  const onScroll = (): void => {
+  const onScroll = () => {
     const containerTop = containerRef.current.getBoundingClientRect().top;
     const bunTop = bunRef.current.getBoundingClientRect().top;
     const mainTop = mainRef.current.getBoundingClientRect().top;
