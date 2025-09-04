@@ -1,0 +1,56 @@
+import {
+  ADD_INGREDIENT,
+  REMOVE_INGREDIENT,
+  ADD_BUN,
+  SORT_INGREDIENT,
+  CLEAR_INGREDIENT,
+} from '../actions/burgerConstructor.js';
+
+import type { TIngredient } from '@/models/ingredient';
+
+type TInitialState = {
+  bun: TIngredient | null;
+  ingredients: TIngredient[];
+  amount: number;
+};
+
+const initialState: TInitialState = {
+  bun: null,
+  ingredients: [],
+  amount: 0,
+};
+
+export const burgerConstructorReducer = (
+  state = initialState,
+  action
+): TInitialState => {
+  switch (action.type) {
+    case ADD_INGREDIENT:
+      return {
+        ...state,
+        ingredients: [...state.ingredients, action.item],
+      };
+    case REMOVE_INGREDIENT:
+      return {
+        ...state,
+        ingredients: state.ingredients.filter(
+          (ingredient, index) => index !== action.index
+        ),
+      };
+    case ADD_BUN:
+      return { ...state, bun: action.item };
+    case SORT_INGREDIENT: {
+      const ingredients = [...state.ingredients];
+      ingredients.splice(action.toIndex, 0, ...ingredients.splice(action.fromIndex, 1));
+
+      return {
+        ...state,
+        ingredients,
+      };
+    }
+    case CLEAR_INGREDIENT:
+      return initialState;
+    default:
+      return state;
+  }
+};

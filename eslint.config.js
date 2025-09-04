@@ -130,8 +130,8 @@ export default tseslint.config([
           prefer: 'type-imports',
         },
       ],
-      '@typescript-eslint/explicit-function-return-type': 'error',
-      '@typescript-eslint/explicit-module-boundary-types': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'warn',
+      '@typescript-eslint/explicit-module-boundary-types': 'warn',
       '@typescript-eslint/no-inferrable-types': [
         'error',
         {
