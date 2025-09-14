@@ -7,7 +7,6 @@ import { SET_TAB } from '../../services/actions/tabs.js';
 import { Ingredient } from '@components/burger-ingredients/ingredient/ingredient.js';
 
 import type { TIngredient } from '@/models/ingredient';
-import type { FC } from 'react';
 
 import styles from './burger-ingredients.module.css';
 
@@ -18,7 +17,7 @@ type TTabs = {
   onClick: () => void;
 };
 
-export const BurgerIngredients: FC = () => {
+export const BurgerIngredients = () => {
   const { items, loading } = useSelector((state) => state.ingredients);
   const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
   const { tab } = useSelector((state) => state.tabs);

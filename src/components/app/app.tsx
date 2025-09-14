@@ -19,19 +19,17 @@ import { RegistrationPage } from '@pages/registration-page/registration-page.js'
 import { ResetPasswordPage } from '@pages/reset-password-page/reset-password-page';
 import { OnlyAuth, OnlyUnAuth } from '@utils/protectedRoute.js';
 
-import type { FC } from 'react';
-
 import styles from './app.module.css';
 
-export const App: FC = () => {
+export const App = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const backgroundLocation = location.state?.backgroundLocation;
 
   useEffect(() => {
-    dispatch(fetchIngredients());
-    dispatch(checkUserAuth());
+    void dispatch(fetchIngredients());
+    void dispatch(checkUserAuth());
   }, [dispatch]);
   return (
     <div className={styles.app}>

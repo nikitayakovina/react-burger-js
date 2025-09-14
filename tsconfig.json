@@ -36,5 +36,5 @@
   "include": ["src"],
   "exclude": ["cypress"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "types": ["@testing-library/jest-dom/vitest"]
+  "types": ["@testing-library/jest-dom/vitest", "react/next", "@types/react/experimental"]
 }

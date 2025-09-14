@@ -14,6 +14,8 @@ import {
 
 import type { TUser } from '@/models/user';
 
+import type { TAuthAction } from '../actions/auth.js';
+
 type TInitialState = {
   user: TUser | null;
   isAuthChecked: boolean;
@@ -26,7 +28,10 @@ const initialState: TInitialState = {
   error: null,
 };
 
-export const authReducer = (state = initialState, action): TInitialState => {
+export const authReducer = (
+  state = initialState,
+  action: TAuthAction
+): TInitialState => {
   switch (action.type) {
     case LOGIN_SUCCESS:
     case LOGOUT_SUCCESS:

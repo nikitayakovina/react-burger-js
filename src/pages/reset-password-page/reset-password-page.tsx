@@ -8,11 +8,11 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { resetPassword } from '@utils/Api/resetPassword.js';
 
-import type { ChangeEvent, FC, FormEvent } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 
 import styles from './reset-password-page.module.css';
 
-export const ResetPasswordPage: FC = () => {
+export const ResetPasswordPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     token: '',

@@ -5,11 +5,10 @@ import ReactDOM from 'react-dom';
 import { ModalOverlay } from '@components/modal-overlay/modal-overlay.js';
 
 import type { TModalProps } from '@/models/modal';
-import type { FC } from 'react';
 
 import styles from './modal.module.css';
 
-export const Modal: FC<TModalProps> = ({ header, children, onClose }) => {
+export const Modal = ({ header, children, onClose }: TModalProps) => {
   const handleEscape = useCallback(
     (callback) => {
       if (callback.key === 'Escape') {

@@ -1,3 +1,4 @@
+import { useAppDispatch } from '@/hooks/dispatch.ts';
 import {
   Button,
   EmailInput,
@@ -5,21 +6,18 @@ import {
   PasswordInput,
 } from '@krgaa/react-developer-burger-ui-components';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { REGISTER_FAILURE, REGISTER_SUCCESS } from '../../services/actions/auth.js';
 import { registerUser } from '@utils/Api/registerUser.js';
 import { setCookie } from '@utils/cookie.ts';
 
-import type { ChangeEvent, FC, FormEvent } from 'react';
-
-import type { AppDispatch } from '@services/store';
+import type { ChangeEvent, FormEvent } from 'react';
 
 import styles from './registration-page.module.css';
 
-export const RegistrationPage: FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
+export const RegistrationPage = () => {
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
     email: '',
     name: '',

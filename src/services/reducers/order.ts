@@ -7,6 +7,8 @@ import {
 
 import type { TOrder } from '@/models/order';
 
+import type { TOrderActions } from '../actions/order';
+
 type TInitialState = {
   order: TOrder | null;
   loading: boolean;
@@ -19,12 +21,15 @@ const initialState: TInitialState = {
   error: null,
 };
 
-export const orderReducer = (state = initialState, action): TInitialState => {
+export const orderReducer = (
+  state = initialState,
+  action: TOrderActions
+): TInitialState => {
   switch (action.type) {
     case ADD_ORDER_REQUEST:
       return { ...state, loading: true, error: null };
     case ADD_ORDER_SUCCESS:
-      return { ...state, loading: false, order: action.number };
+      return { ...state, loading: false, order: action.order };
     case ADD_ORDER_ERROR:
       return { ...state, loading: false, error: action.payload };
     case CLEAR_ORDER:

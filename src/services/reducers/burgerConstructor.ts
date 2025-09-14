@@ -8,6 +8,8 @@ import {
 
 import type { TIngredient } from '@/models/ingredient';
 
+import type { TBurgerConstructorActions } from '../actions/burgerConstructor.js';
+
 type TInitialState = {
   bun: TIngredient | null;
   ingredients: TIngredient[];
@@ -22,7 +24,7 @@ const initialState: TInitialState = {
 
 export const burgerConstructorReducer = (
   state = initialState,
-  action
+  action: TBurgerConstructorActions
 ): TInitialState => {
   switch (action.type) {
     case ADD_INGREDIENT:

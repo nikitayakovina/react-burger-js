@@ -5,6 +5,8 @@ import {
 
 import type { TIngredient } from '@/models/ingredient';
 
+import type { TIngredientDetailsActions } from '../actions/ingredientDetails';
+
 type TInitialState = {
   ingredient: TIngredient | null;
 };
@@ -15,7 +17,7 @@ const initialState: TInitialState = {
 
 export const ingredientDetailsReducer = (
   state = initialState,
-  action
+  action: TIngredientDetailsActions
 ): TInitialState => {
   switch (action.type) {
     case SET_INGREDIENT_DETAILS:

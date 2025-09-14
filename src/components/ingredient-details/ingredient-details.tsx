@@ -2,11 +2,10 @@ import classNames from 'classnames';
 
 import type { TIngredientDetails } from '@/models/burger-ingredients';
 import type { TIngredient } from '@/models/ingredient';
-import type { FC } from 'react';
 
 import styles from './ingredient-details.module.css';
 
-const CaloricContent: FC<TIngredientDetails> = ({ description, value, className }) => {
+const CaloricContent = ({ description, value, className }: TIngredientDetails) => {
   const classList = (classNames as unknown)(className, styles.detail);
 
   return (
@@ -21,7 +20,7 @@ const CaloricContent: FC<TIngredientDetails> = ({ description, value, className 
   );
 };
 
-export const IngredientDetails: FC<{ ingredient: TIngredient }> = ({ ingredient }) => {
+export const IngredientDetails = ({ ingredient }: TIngredient) => {
   return (
     <div className={styles.container}>
       <img className={styles.preview} src={ingredient.image} alt="Превью ингредиента" />

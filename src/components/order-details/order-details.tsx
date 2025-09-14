@@ -2,11 +2,9 @@ import { useSelector } from 'react-redux';
 
 import doneImage from '../../../public/done.svg';
 
-import type { FC } from 'react';
-
 import styles from './order-details.module.css';
 
-export const OrderDetails: FC = () => {
+export const OrderDetails = () => {
   const { order } = useSelector((state) => state.order);
 
   return (

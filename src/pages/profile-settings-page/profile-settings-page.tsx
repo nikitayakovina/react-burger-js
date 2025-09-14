@@ -11,11 +11,11 @@ import { useSelector } from 'react-redux';
 import { UPDATE_USER_SUCCESS } from '../../services/actions/auth.js';
 import { updateUser } from '@utils/Api/updateUser.js';
 
-import type { ChangeEvent, FC, FormEvent } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 
 import styles from './profile-settings-page.module.css';
 
-export const ProfileSettingsPage: FC = () => {
+export const ProfileSettingsPage = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const [change, setChange] = useState(false);

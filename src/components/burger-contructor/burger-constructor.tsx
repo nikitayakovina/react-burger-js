@@ -20,20 +20,15 @@ import { Ingredient } from '@components/burger-contructor/ingredient/ingredient.
 import { Modal } from '@components/modal/modal.js';
 import { OrderDetails } from '@components/order-details/order-details.js';
 
-import type { FC } from 'react';
-
 type TBunItem = {
   index: number;
   name: string;
 };
 
-type TIngredientItem = {
-  id: string;
-  name: string;
-};
+import type { TIngredient } from '@/models/ingredient.ts';
 
 import styles from './burger-constructor.module.css';
-export const BurgerConstructor: FC = () => {
+export const BurgerConstructor = () => {
   const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
   const { user } = useSelector((state) => state.auth);
   const { order, loading } = useSelector((state) => state.order);
@@ -51,10 +46,11 @@ export const BurgerConstructor: FC = () => {
       dispatch({ type: ADD_BUN, item });
     },
   });
-  const [, dropIngredient] = useDrop<TIngredientItem, void, unknown>({
+  const [, dropIngredient] = useDrop<TIngredient, void, unknown>({
     accept: 'main',
-    drop(item: TIngredientItem) {
-      dispatch(addIngredient(item));
+    drop(item: TIngredient) {
+      console.log(item);
+      void dispatch(addIngredient(item));
     },
   });
   const amount = useMemo(() => {

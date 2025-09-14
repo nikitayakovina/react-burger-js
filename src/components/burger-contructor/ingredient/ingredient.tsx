@@ -12,13 +12,12 @@ import {
 } from '../../../services/actions/burgerConstructor.js';
 
 import type { TIngredientBurgerProps } from '@/models/burger-constructor';
-import type { FC } from 'react';
 type TDragItem = {
   index: number;
 };
-export const Ingredient: FC<TIngredientBurgerProps> = ({ ingredient, index }) => {
+export const Ingredient = ({ ingredient, index }: TIngredientBurgerProps) => {
   const dispatch = useAppDispatch();
-  const ingredientRef = useRef(null);
+  const ingredientRef = useRef<HTMLDivElement | null>(null);
   const handleClose = () => {
     dispatch({ type: REMOVE_INGREDIENT, index });
   };
@@ -34,10 +33,10 @@ export const Ingredient: FC<TIngredientBurgerProps> = ({ ingredient, index }) =>
       }
     },
   });
-  drag(drop(ingredientRef));
+  drag(drop(ingredientRef.current));
 
   return (
-    <div ref={ingredientRef}>
+    <div ref={(node) => drag(drop(node))}>
       <DragIcon type="primary" className="mr-2" />
       <ConstructorElement
         handleClose={handleClose}
