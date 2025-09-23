@@ -38,8 +38,6 @@ export const socketMiddleware = (wsUrl: string, wsActions: TWSActions): Middlewa
         socket.onmessage = async (event: MessageEvent) => {
           const data = JSON.parse(event.data);
 
-          console.log('Received message', data);
-
           if (data.message === 'Invalid or missing token') {
             const token = await refreshToken();
 
