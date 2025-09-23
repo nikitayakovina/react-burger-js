@@ -38,10 +38,10 @@ export const FeedDetail = ({ isModal = false }: TFeedDetailProps) => {
     : [];
   const ingredientMap = orderIngredients.reduce<Record<string, TIngredientWithCount>>(
     (acc, item) => {
-      if (acc[item._id]) {
+      if (item && acc[item._id]) {
         acc[item._id].count += 1;
         acc[item._id].totalPrice = acc[item._id].price * acc[item._id].count;
-      } else {
+      } else if (item) {
         acc[item._id] = {
           ...item,
           count: 1,

@@ -1,6 +1,7 @@
 import { addOrder } from '@utils/Api/addOrder.ts';
 import { fetchOrder } from '@utils/Api/fetchOrder.ts';
 
+import type { TIngredient } from '@/models/ingredient.ts';
 import type { TCreateOrder, TOrder } from '@/models/order.ts';
 import type { ThunkAction } from 'redux-thunk';
 
@@ -56,15 +57,17 @@ export type TOrderActions =
   | IFetchOrderSuccessAction
   | IFetchOrderErrorAction;
 
-export const sendOrder = (ingredients) => {
+export const sendOrder = (ingredients: TIngredient[]) => {
   return async (dispatch: AppDispatch) => {
     dispatch({ type: ADD_ORDER_REQUEST });
     try {
       addOrder(ingredients).then((res) =>
         dispatch({ type: ADD_ORDER_SUCCESS, order: res.order })
       );
-    } catch (error) {
-      dispatch({ type: ADD_ORDER_ERROR, payload: error.message });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        dispatch({ type: ADD_ORDER_ERROR, payload: error.message });
+      }
     }
   };
 };
@@ -78,8 +81,10 @@ export const fetchOrderAction = (
       const response = await fetchOrder(id);
 
       dispatch({ type: FETCH_ORDER_SUCCESS, order: response.orders?.[0] });
-    } catch (e: never) {
-      dispatch({ type: FETCH_ORDER_ERROR, payload: e!.message });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        dispatch({ type: FETCH_ORDER_ERROR, payload: error.message });
+      }
     }
   };
 };

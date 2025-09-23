@@ -57,8 +57,10 @@ export const fetchIngredients = (): ThunkAction<
     try {
       const response = await loadIngredients();
       dispatch(fetchIngredientsSuccess(response.data));
-    } catch (e: unknown) {
-      dispatch(fetchIngredientsError(e.message));
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        dispatch(fetchIngredientsError(error.message));
+      }
     }
   };
 };

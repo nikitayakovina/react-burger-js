@@ -6,5 +6,5 @@ export const request = <TResponse>(
   endpoint: string,
   options?: RequestInit
 ): Promise<TResponse> => {
-  return fetch(`${apiUrl}${endpoint}`, options).then(checkResponse);
+  return fetch(`${apiUrl}${endpoint}`, options).then(checkResponse<TResponse>);
 };

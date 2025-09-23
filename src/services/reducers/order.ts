@@ -4,6 +4,8 @@ import {
   ADD_ORDER_ERROR,
   CLEAR_ORDER,
   FETCH_ORDER_SUCCESS,
+  FETCH_ORDER_ERROR,
+  FETCH_ORDER_REQUEST,
 } from '../actions/order';
 
 import type { TCreateOrder, TFetchOrderNumber, TOrder } from '@/models/order';
@@ -32,11 +34,13 @@ export const orderReducer = (
 ): TInitialState => {
   switch (action.type) {
     case ADD_ORDER_REQUEST:
+    case FETCH_ORDER_REQUEST:
       return { ...state, loading: true, error: null };
     case ADD_ORDER_SUCCESS:
     case FETCH_ORDER_SUCCESS:
       return { ...state, loading: false, order: action.order };
     case ADD_ORDER_ERROR:
+    case FETCH_ORDER_ERROR:
       return { ...state, loading: false, error: action.payload };
     case CLEAR_ORDER:
       return initialState;

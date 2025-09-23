@@ -5,6 +5,10 @@ import type { TIngredient } from '@/models/ingredient';
 
 import styles from './ingredient-details.module.css';
 
+export type IngredientDetailsProps = {
+  ingredient: TIngredient;
+};
+
 const CaloricContent = ({ description, value, className }: TIngredientDetails) => {
   const classList = (classNames as unknown)(className, styles.detail);
 
@@ -20,7 +24,7 @@ const CaloricContent = ({ description, value, className }: TIngredientDetails) =
   );
 };
 
-export const IngredientDetails = ({ ingredient }: TIngredient) => {
+export const IngredientDetails = ({ ingredient }: IngredientDetailsProps) => {
   return (
     <div className={styles.container}>
       <img className={styles.preview} src={ingredient.image} alt="Превью ингредиента" />

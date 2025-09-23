@@ -9,7 +9,12 @@ export const AppHeader = () => {
     <header className={styles.header}>
       <nav className={`${styles.menu} p-4`}>
         <div className={styles.menu_part_left}>
-          <CustomNavLink to={'/'} icon={BurgerIcon} text={'Конструктор'}></CustomNavLink>
+          <CustomNavLink
+            to={'/'}
+            icon={BurgerIcon}
+            text={'Конструктор'}
+            className={''}
+          ></CustomNavLink>
           <CustomNavLink
             to={'/feed'}
             icon={ListIcon}

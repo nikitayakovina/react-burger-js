@@ -13,7 +13,7 @@ import styles from './order.module.css';
 
 type OrderProps = {
   order: TWSOrder;
-  isProfile: boolean;
+  isProfile?: boolean;
 };
 
 export const Order = ({ order, isProfile = false }: OrderProps) => {

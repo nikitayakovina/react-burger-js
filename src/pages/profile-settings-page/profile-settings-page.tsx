@@ -19,7 +19,11 @@ export const ProfileSettingsPage = () => {
   const { user } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const [change, setChange] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    name: string;
+    email: string;
+    password?: string;
+  }>({
     name: '',
     email: '',
     password: '',

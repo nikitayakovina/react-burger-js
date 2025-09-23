@@ -10,7 +10,7 @@ export const ProtectedRoute = ({
 }: TProtectedRouteProps) => {
   const location = useLocation();
   const { user, isAuthChecked } = useAppSelector((state) => state.auth);
-  const isResetPassword = JSON.parse(localStorage.getItem('resetPassword'));
+  const isResetPassword = JSON.parse(localStorage.getItem('resetPassword') as string);
 
   if (location.pathname.endsWith('/reset-password') && !isResetPassword && !user) {
     return <Navigate to="/forgot-password" />;

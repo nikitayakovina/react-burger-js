@@ -10,15 +10,18 @@ import styles from './forgot-password-page.module.css';
 
 export const ForgotPasswordPage = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState<string | null>(null);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    forgotPassword(email)
-      .then(() => {
-        localStorage.setItem('resetPassword', JSON.stringify(true));
-        navigate('/reset-password', { replace: true });
-      })
-      .catch((error) => console.error(error));
+
+    if (email) {
+      forgotPassword(email)
+        .then(() => {
+          localStorage.setItem('resetPassword', JSON.stringify(true));
+          navigate('/reset-password', { replace: true });
+        })
+        .catch((error) => console.error(error));
+    }
   };
 
   return (

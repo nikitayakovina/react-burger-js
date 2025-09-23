@@ -65,7 +65,7 @@ export const BurgerConstructor = () => {
   const createOrder = () => {
     if (!user) {
       navigate('/login', { replace: true });
-    } else {
+    } else if (bun !== null) {
       void dispatch(sendOrder([...ingredients, bun, bun]));
     }
   };
@@ -105,7 +105,6 @@ export const BurgerConstructor = () => {
                 .filter((ingredient) => ingredient.type !== 'bun')
                 .map((ingredient, i) => (
                   <Ingredient
-                    className={styles.item}
                     ingredient={ingredient}
                     index={i}
                     key={ingredient.uniqueId}

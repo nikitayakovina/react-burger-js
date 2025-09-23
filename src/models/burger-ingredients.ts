@@ -9,5 +9,5 @@ export type TBurgerIngredientsProps = {
 export type TIngredientDetails = {
   description: string;
   value: number;
-  className: string | string[];
+  className?: string | string[];
 };

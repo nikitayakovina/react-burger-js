@@ -12,7 +12,7 @@ import type { TBurgerConstructorActions } from '../actions/burgerConstructor.js'
 
 type TInitialState = {
   bun: TIngredient | null;
-  ingredients: TIngredient[];
+  ingredients: (TIngredient & { uniqueId?: string })[];
   amount: number;
 };
 

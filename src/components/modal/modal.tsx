@@ -10,7 +10,7 @@ import styles from './modal.module.css';
 
 export const Modal = ({ header, children, onClose }: TModalProps) => {
   const handleEscape = useCallback(
-    (callback) => {
+    (callback: KeyboardEvent) => {
       if (callback.key === 'Escape') {
         onClose(callback);
       }

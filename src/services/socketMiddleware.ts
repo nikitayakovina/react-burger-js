@@ -1,3 +1,6 @@
+import { refreshToken } from '@utils/Api/refreshToken.ts';
+import { setCookie } from '@utils/cookie.ts';
+
 import type { Middleware, MiddlewareAPI } from 'redux';
 
 import type {
@@ -32,10 +35,19 @@ export const socketMiddleware = (wsUrl: string, wsActions: TWSActions): Middlewa
           });
         };
 
-        socket.onmessage = (event: MessageEvent) => {
-          const { data } = event;
+        socket.onmessage = async (event: MessageEvent) => {
+          const data = JSON.parse(event.data);
 
-          dispatch({ type: wsActions.onMessage, payload: JSON.parse(data) });
+          console.log('Received message', data);
+
+          if (data.message === 'Invalid or missing token') {
+            const token = await refreshToken();
+
+            localStorage.setItem('refreshToken', token.refreshToken);
+            setCookie('accessToken', token.accessToken.split('Bearer ')[1]);
+          }
+
+          dispatch({ type: wsActions.onMessage, payload: data });
         };
 
         socket.onclose = (event: CloseEvent) => {

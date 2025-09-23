@@ -12,3 +12,5 @@ export type TRegistration = {
   accessToken: string;
   refreshToken: string;
 };
+
+export type TUserAuth = Pick<TRegistration, 'success' | 'user'>;
