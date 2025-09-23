@@ -1,5 +1,5 @@
+import { useAppSelector } from '@/hooks/selector.ts';
 import { Preloader } from '@krgaa/react-developer-burger-ui-components';
-import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import type { TOnlyUnAuthProps, TProtectedRouteProps } from '@/models/protected-route';
@@ -9,7 +9,7 @@ export const ProtectedRoute = ({
   component,
 }: TProtectedRouteProps) => {
   const location = useLocation();
-  const { user, isAuthChecked } = useSelector((state) => state.auth);
+  const { user, isAuthChecked } = useAppSelector((state) => state.auth);
   const isResetPassword = JSON.parse(localStorage.getItem('resetPassword'));
 
   if (location.pathname.endsWith('/reset-password') && !isResetPassword && !user) {

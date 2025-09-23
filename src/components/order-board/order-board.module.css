@@ -1,0 +1,34 @@
+.board {
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  display: flex;
+  width: 580px;
+  overflow: hidden auto;
+}
+
+.statusDone {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.statusWork {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.numberList {
+  display: flex;
+  flex-direction: column;
+  color: #0cc;
+}
+
+.numberListWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

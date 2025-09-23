@@ -7,7 +7,6 @@ import {
 } from '@krgaa/react-developer-burger-ui-components';
 import { useMemo } from 'react';
 import { useDrop } from 'react-dnd';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -25,13 +24,15 @@ type TBunItem = {
   name: string;
 };
 
+import { useAppSelector } from '@/hooks/selector.ts';
+
 import type { TIngredient } from '@/models/ingredient.ts';
 
 import styles from './burger-constructor.module.css';
 export const BurgerConstructor = () => {
-  const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
-  const { user } = useSelector((state) => state.auth);
-  const { order, loading } = useSelector((state) => state.order);
+  const { bun, ingredients } = useAppSelector((state) => state.burgerConstructor);
+  const { user } = useAppSelector((state) => state.auth);
+  const { order, loading } = useAppSelector((state) => state.order);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [, dropBunUp] = useDrop<TBunItem, void, unknown>({
@@ -49,7 +50,6 @@ export const BurgerConstructor = () => {
   const [, dropIngredient] = useDrop<TIngredient, void, unknown>({
     accept: 'main',
     drop(item: TIngredient) {
-      console.log(item);
       void dispatch(addIngredient(item));
     },
   });
@@ -66,7 +66,7 @@ export const BurgerConstructor = () => {
     if (!user) {
       navigate('/login', { replace: true });
     } else {
-      dispatch(sendOrder([...ingredients, bun, bun]));
+      void dispatch(sendOrder([...ingredients, bun, bun]));
     }
   };
   const handleCloseModal = () => {

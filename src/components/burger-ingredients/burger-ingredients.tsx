@@ -1,7 +1,7 @@
 import { useAppDispatch } from '@/hooks/dispatch';
+import { useAppSelector } from '@/hooks/selector.ts';
 import { Preloader, Tab } from '@krgaa/react-developer-burger-ui-components';
 import { useMemo, useRef } from 'react';
-import { useSelector } from 'react-redux';
 
 import { SET_TAB } from '../../services/actions/tabs.js';
 import { Ingredient } from '@components/burger-ingredients/ingredient/ingredient.js';
@@ -18,9 +18,9 @@ type TTabs = {
 };
 
 export const BurgerIngredients = () => {
-  const { items, loading } = useSelector((state) => state.ingredients);
-  const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
-  const { tab } = useSelector((state) => state.tabs);
+  const { items, loading } = useAppSelector((state) => state.ingredients);
+  const { bun, ingredients } = useAppSelector((state) => state.burgerConstructor);
+  const { tab } = useAppSelector((state) => state.tabs);
   const buns: TIngredient[] = items.filter((ingredient) => ingredient.type === 'bun');
   const mains: TIngredient[] = items.filter((ingredient) => ingredient.type === 'main');
   const dispatch = useAppDispatch();

@@ -6,6 +6,7 @@ import { ingredientDetailsReducer } from './reducers/ingredientDetails';
 import { ingredientsReducer } from './reducers/ingredients';
 import { orderReducer } from './reducers/order';
 import { tabsReducer } from './reducers/tabs';
+import { wsReducer } from './reducers/ws.ts';
 
 export const rootReducer = combineReducers({
   ingredients: ingredientsReducer,
@@ -14,4 +15,5 @@ export const rootReducer = combineReducers({
   order: orderReducer,
   tabs: tabsReducer,
   auth: authReducer,
+  wsReducer: wsReducer,
 });
