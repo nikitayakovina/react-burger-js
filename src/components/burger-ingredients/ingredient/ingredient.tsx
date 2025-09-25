@@ -5,15 +5,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import type { TBurgerIngredientsProps } from '@/models/burger-ingredients';
 import type { TIngredient } from '@/models/ingredient';
-import type { FC } from 'react';
 
 import styles from './ingredient.module.css';
 
-export const Ingredient: FC<TBurgerIngredientsProps> = ({
+export const Ingredient = ({
   ingredient,
   className,
   count,
-}) => {
+}: TBurgerIngredientsProps) => {
   const classList = (classNames as unknown)(className, styles.ingredient);
   const navigate = useNavigate();
   const location = useLocation();

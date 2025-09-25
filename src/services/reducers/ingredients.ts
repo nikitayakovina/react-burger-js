@@ -6,6 +6,8 @@ import {
 
 import type { TIngredient } from '@/models/ingredient';
 
+import type { TIngredientsActions } from '../actions/ingredients';
+
 type TInitialState = {
   items: TIngredient[];
   loading: boolean;
@@ -18,14 +20,22 @@ const initialState: TInitialState = {
   error: null,
 };
 
-export const ingredientsReducer = (state = initialState, action): TInitialState => {
+export const ingredientsReducer = (
+  state = initialState,
+  action: TIngredientsActions
+): TInitialState => {
   switch (action.type) {
     case FETCH_INGREDIENTS_REQUEST:
       return { ...state, loading: true, error: null };
     case FETCH_INGREDIENTS_SUCCESS:
       return { ...state, loading: false, items: action.data };
     case FETCH_INGREDIENTS_ERROR:
-      return { ...state, loading: false, error: action.data, items: initialState.items };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        items: initialState.items,
+      };
     default:
       return state;
   }

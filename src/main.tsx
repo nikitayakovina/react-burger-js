@@ -5,12 +5,14 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import store from './services/store';
+import { store } from '../src/services/store.ts';
 import { App } from '@components/app/app.js';
 
 import './index.css';
 
-createRoot(document.getElementById('root')).render(
+const rootElement = document.getElementById('root') as HTMLElement;
+
+createRoot(rootElement).render(
   <StrictMode>
     <Provider store={store}>
       <DndProvider backend={HTML5Backend}>

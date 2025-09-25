@@ -1,7 +1,9 @@
 import { request } from '@utils/request.js';
 
+import type { TPasswordReset } from '@/models/password-reset.ts';
+
 export const forgotPassword = (email: string) => {
-  return request('/api/password-reset', {
+  return request<TPasswordReset>('/api/password-reset', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

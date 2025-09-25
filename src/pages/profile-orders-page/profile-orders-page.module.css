@@ -1,7 +1,14 @@
-.pageContainer {
+.main {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  width: 1240px;
   height: inherit;
-  text-align: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.orders {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden auto;
 }

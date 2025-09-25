@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 type TIconTypes = 'secondary' | 'primary' | 'error' | 'success' | 'disabled';
 type TIconProps = {
   type: TIconTypes;

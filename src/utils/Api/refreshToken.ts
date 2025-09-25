@@ -1,7 +1,9 @@
 import { request } from '@utils/request.ts';
 
+import type { TToken } from '@/models/token.ts';
+
 export const refreshToken = () => {
-  return request('/api/auth/token', {
+  return request<TToken>('/api/auth/token', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

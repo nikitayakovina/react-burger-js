@@ -7,7 +7,6 @@ import {
 } from '@krgaa/react-developer-burger-ui-components';
 import { useMemo } from 'react';
 import { useDrop } from 'react-dnd';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -20,23 +19,20 @@ import { Ingredient } from '@components/burger-contructor/ingredient/ingredient.
 import { Modal } from '@components/modal/modal.js';
 import { OrderDetails } from '@components/order-details/order-details.js';
 
-import type { FC } from 'react';
-
 type TBunItem = {
   index: number;
   name: string;
 };
 
-type TIngredientItem = {
-  id: string;
-  name: string;
-};
+import { useAppSelector } from '@/hooks/selector.ts';
+
+import type { TIngredient } from '@/models/ingredient.ts';
 
 import styles from './burger-constructor.module.css';
-export const BurgerConstructor: FC = () => {
-  const { bun, ingredients } = useSelector((state) => state.burgerConstructor);
-  const { user } = useSelector((state) => state.auth);
-  const { order, loading } = useSelector((state) => state.order);
+export const BurgerConstructor = () => {
+  const { bun, ingredients } = useAppSelector((state) => state.burgerConstructor);
+  const { user } = useAppSelector((state) => state.auth);
+  const { order, loading } = useAppSelector((state) => state.order);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [, dropBunUp] = useDrop<TBunItem, void, unknown>({
@@ -51,10 +47,10 @@ export const BurgerConstructor: FC = () => {
       dispatch({ type: ADD_BUN, item });
     },
   });
-  const [, dropIngredient] = useDrop<TIngredientItem, void, unknown>({
+  const [, dropIngredient] = useDrop<TIngredient, void, unknown>({
     accept: 'main',
-    drop(item: TIngredientItem) {
-      dispatch(addIngredient(item));
+    drop(item: TIngredient) {
+      void dispatch(addIngredient(item));
     },
   });
   const amount = useMemo(() => {
@@ -69,8 +65,8 @@ export const BurgerConstructor: FC = () => {
   const createOrder = () => {
     if (!user) {
       navigate('/login', { replace: true });
-    } else {
-      dispatch(sendOrder([...ingredients, bun, bun]));
+    } else if (bun !== null) {
+      void dispatch(sendOrder([...ingredients, bun, bun]));
     }
   };
   const handleCloseModal = () => {
@@ -109,7 +105,6 @@ export const BurgerConstructor: FC = () => {
                 .filter((ingredient) => ingredient.type !== 'bun')
                 .map((ingredient, i) => (
                   <Ingredient
-                    className={styles.item}
                     ingredient={ingredient}
                     index={i}
                     key={ingredient.uniqueId}

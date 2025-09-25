@@ -11,11 +11,11 @@ import { LOGIN_FAILURE, LOGIN_SUCCESS } from '../../services/actions/auth.js';
 import { loginUser } from '@utils/Api/loginUser.js';
 import { setCookie } from '@utils/cookie.js';
 
-import type { ChangeEvent, FC, FormEvent } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 
 import styles from './login-page.module.css';
 
-export const LoginPage: FC = () => {
+export const LoginPage = () => {
   const [formData, setFormData] = useState<Record<string, string>>({
     email: '',
     password: '',

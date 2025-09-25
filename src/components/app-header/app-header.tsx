@@ -2,16 +2,19 @@ import { BurgerIcon, ListIcon, Logo } from '@krgaa/react-developer-burger-ui-com
 
 import { CustomNavLink } from '@components/custom-nav-link/custom-nav-link.js';
 
-import type { FC } from 'react';
-
 import styles from './app-header.module.css';
 
-export const AppHeader: FC = () => {
+export const AppHeader = () => {
   return (
     <header className={styles.header}>
       <nav className={`${styles.menu} p-4`}>
         <div className={styles.menu_part_left}>
-          <CustomNavLink to={'/'} icon={BurgerIcon} text={'Конструктор'}></CustomNavLink>
+          <CustomNavLink
+            to={'/'}
+            icon={BurgerIcon}
+            text={'Конструктор'}
+            className={''}
+          ></CustomNavLink>
           <CustomNavLink
             to={'/feed'}
             icon={ListIcon}

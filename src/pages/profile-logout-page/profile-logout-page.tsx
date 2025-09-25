@@ -1,5 +1,3 @@
-import type { FC } from 'react';
-
-export const ProfileLogoutPage: FC = () => {
+export const ProfileLogoutPage = () => {
   return <section></section>;
 };

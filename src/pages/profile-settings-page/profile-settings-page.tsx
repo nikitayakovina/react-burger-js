@@ -1,4 +1,5 @@
 import { useAppDispatch } from '@/hooks/dispatch';
+import { useAppSelector } from '@/hooks/selector.ts';
 import {
   Button,
   EmailInput,
@@ -6,20 +7,23 @@ import {
   PasswordInput,
 } from '@krgaa/react-developer-burger-ui-components';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import { UPDATE_USER_SUCCESS } from '../../services/actions/auth.js';
 import { updateUser } from '@utils/Api/updateUser.js';
 
-import type { ChangeEvent, FC, FormEvent } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 
 import styles from './profile-settings-page.module.css';
 
-export const ProfileSettingsPage: FC = () => {
-  const { user } = useSelector((state) => state.auth);
+export const ProfileSettingsPage = () => {
+  const { user } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const [change, setChange] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    name: string;
+    email: string;
+    password?: string;
+  }>({
     name: '',
     email: '',
     password: '',

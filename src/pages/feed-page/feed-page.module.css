@@ -1,0 +1,27 @@
+.title {
+  width: 100%;
+  max-width: 1260px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  width: inherit;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.orders {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden auto;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
