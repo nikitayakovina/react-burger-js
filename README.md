@@ -1,5 +1,7 @@
 # Стартер на JavaScript для проекта Stellar Burger
 
+Проект доступен по [ссылке](https://nikitayakovina.github.io/react-burger-js/)
+
 ## Процедура создания коммита с проверками
 
 При создании коммита автоматически запускаются проверка линтерами `stylelint`, `eslint` и форматирование `prettier`.
