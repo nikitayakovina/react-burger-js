@@ -3,6 +3,21 @@ describe('burgerConstructor', () => {
     cy.visit("/");
   });
 
+  it("modal with the ingredient open", () => {
+    cy.get('[data-testid="ingredientCard"]').should('exist');
+
+    cy.get('[data-testid="ingredientCard"]')
+      .contains('булка')
+      .first()
+      .click();
+
+    cy.get('[data-testid="detailsIngredient"]', { timeout: 10000 }).should("be.visible");
+
+    cy.get('[data-testid="modalClose"]').click();
+
+    cy.contains('Перетащите ингридиенты');
+  });
+
   it("should order created", () => {
     cy.get('[data-testid="ingredientCard"]').should('exist');
     cy.get('[data-testid="ingredientCard"]').should('have.length.at.least', 1);
