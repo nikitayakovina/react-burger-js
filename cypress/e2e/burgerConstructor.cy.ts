@@ -4,25 +4,40 @@ describe('burgerConstructor', () => {
   });
 
   it("modal with the ingredient open", () => {
-    cy.get('[data-testid="ingredientCard"]').should('exist');
+    cy.get('[data-testid="ingredientCard"]').as('ingredientCard');
 
-    cy.get('[data-testid="ingredientCard"]')
+    cy.get('@ingredientCard').should('exist');
+
+    cy.get('@ingredientCard')
       .contains('булка')
       .first()
-      .click();
+      .then((ingredient) => {
+        const clickedName = ingredient.text().trim();
+
+        cy.wrap(ingredient).click();
+
+        cy.get('[data-testid="detailsIngredient"]', { timeout: 10000 })
+          .should('be.visible')
+          .within(() => {
+            cy.get('[data-testid="ingredientName"]').should('have.text', clickedName);
+          });
+      });
+
 
     cy.get('[data-testid="detailsIngredient"]', { timeout: 10000 }).should("be.visible");
 
     cy.get('[data-testid="modalClose"]').click();
 
-    cy.contains('Перетащите ингридиенты');
+    cy.get('[data-testid="modalContainer"]').should('not.exist');
   });
 
   it("should order created", () => {
-    cy.get('[data-testid="ingredientCard"]').should('exist');
-    cy.get('[data-testid="ingredientCard"]').should('have.length.at.least', 1);
+    cy.get('[data-testid="ingredientCard"]').as('ingredientCard');
 
-    cy.get('[data-testid="ingredientCard"]')
+    cy.get('@ingredientCard').should('exist');
+    cy.get('@ingredientCard').should('have.length.at.least', 1);
+
+    cy.get('@ingredientCard')
       .contains('булка')
       .first()
       .trigger('dragstart');
@@ -30,7 +45,7 @@ describe('burgerConstructor', () => {
     cy.get('[data-testid="dropBunTop"]')
       .trigger('drop');
 
-    cy.get('[data-testid="ingredientCard"]')
+    cy.get('@ingredientCard')
       .not(':contains("булка")')
       .first()
       .trigger('dragstart');
@@ -53,9 +68,9 @@ describe('burgerConstructor', () => {
 
     cy.get('[data-testid="createOrderButton"]').click();
 
-    cy.get('[data-testid="createdOrder"]', { timeout: 20000 }).should("be.visible");
+    cy.get('[data-testid="numberOrder"]', { timeout: 20000 }).should('exist');
     cy.get('[data-testid="modalClose"]').click();
 
-    cy.contains('Перетащите ингридиенты');
+    cy.get('[data-testid="modalContainer"]').should('not.exist');
   });
 });
