@@ -11,7 +11,7 @@ type TInitialState = {
   ingredient: TIngredient | null;
 };
 
-const initialState: TInitialState = {
+export const initialState: TInitialState = {
   ingredient: null,
 };
 

@@ -80,9 +80,10 @@ export const BurgerConstructor = () => {
         <Preloader />
       ) : (
         <>
-          <div ref={dropBunUp}>
+          <div ref={dropBunUp} data-testid="dropBunTop">
             {bun ? (
               <ConstructorElement
+                data-testid="constructorBunTop"
                 extraClass="mb-2 ml-8"
                 type="top"
                 key={bun._id}
@@ -99,12 +100,17 @@ export const BurgerConstructor = () => {
               </div>
             )}
           </div>
-          <div className={`${styles.burgerConstructor_list}`} ref={dropIngredient}>
+          <div
+            className={`${styles.burgerConstructor_list}`}
+            ref={dropIngredient}
+            data-testid="dropIngredient"
+          >
             {ingredients?.length ? (
               ingredients
                 .filter((ingredient) => ingredient.type !== 'bun')
                 .map((ingredient, i) => (
                   <Ingredient
+                    data-testid="constructorIngredient"
                     ingredient={ingredient}
                     index={i}
                     key={ingredient.uniqueId}
@@ -118,9 +124,10 @@ export const BurgerConstructor = () => {
               </div>
             )}
           </div>
-          <div ref={dropBunDown}>
+          <div ref={dropBunDown} data-testid="dropBunDown">
             {bun ? (
               <ConstructorElement
+                data-testid="constructorBunDown"
                 extraClass="mt-2 ml-8"
                 type="bottom"
                 key={bun._id}
@@ -143,6 +150,7 @@ export const BurgerConstructor = () => {
               <CurrencyIcon type="primary"></CurrencyIcon>
             </div>
             <Button
+              data-testid="createOrderButton"
               type="primary"
               size="medium"
               htmlType="button"

@@ -27,7 +27,12 @@ export const Ingredient = ({
   });
 
   return (
-    <div className={classList} ref={ref} onClick={handleNavigate}>
+    <div
+      className={classList}
+      ref={ref}
+      onClick={handleNavigate}
+      data-testid="ingredientCard"
+    >
       <div className={`${styles.ingredient_preview} ml-4 mr-4`}>
         <img src={ingredient.image} alt="Превью ингредиента" />
       </div>

@@ -18,7 +18,8 @@ export default tseslint.config([
   {
     ignores: [
       '*.config.*',
-      '**/*.d.ts',
+      '**/**/**/*.d.ts',
+      'src/services/reducers/**/*.test.js',
       'dist',
       'node_modules',
       'package*.json',

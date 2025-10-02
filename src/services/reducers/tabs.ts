@@ -6,7 +6,7 @@ type TInitialState = {
   tab: 'bun' | 'main' | 'sauce';
 };
 
-const initialState: TInitialState = {
+export const initialState: TInitialState = {
   tab: 'bun',
 };
 
