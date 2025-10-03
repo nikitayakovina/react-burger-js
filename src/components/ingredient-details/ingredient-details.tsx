@@ -26,9 +26,12 @@ const CaloricContent = ({ description, value, className }: TIngredientDetails) =
 
 export const IngredientDetails = ({ ingredient }: IngredientDetailsProps) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="detailsIngredient">
       <img className={styles.preview} src={ingredient.image} alt="Превью ингредиента" />
-      <div className={`${styles.name} text text_type_main-medium mt-4 mb-8`}>
+      <div
+        className={`${styles.name} text text_type_main-medium mt-4 mb-8`}
+        data-testid="ingredientName"
+      >
         {ingredient.name}
       </div>
       <div className={`${styles.details} mb-15`}>

@@ -36,7 +36,7 @@ export const Ingredient = ({ ingredient, index }: TIngredientBurgerProps) => {
   drag(drop(ingredientRef.current));
 
   return (
-    <div ref={(node) => drag(drop(node))}>
+    <div ref={(node) => drag(drop(node))} data-testid="constructorIngredient">
       <DragIcon type="primary" className="mr-2" />
       <ConstructorElement
         handleClose={handleClose}

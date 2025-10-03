@@ -16,7 +16,7 @@ type TInitialState = {
   amount: number;
 };
 
-const initialState: TInitialState = {
+export const initialState: TInitialState = {
   bun: null,
   ingredients: [],
   amount: 0,

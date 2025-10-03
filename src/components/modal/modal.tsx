@@ -32,11 +32,11 @@ export const Modal = ({ header, children, onClose }: TModalProps) => {
 
   const modalElement = document.getElementById('modal');
   const modalContent = (
-    <div className={styles.modalWrapper}>
+    <div className={styles.modalWrapper} data-testid="modalContainer">
       <div className={styles.modalInner}>
         <div className={`${styles.headerContainer} mt-10 ml-10 mr-10`}>
           <div className={`${styles.header} text text_type_main-large`}>{header}</div>
-          <div className={styles.closeIcon}>
+          <div className={styles.closeIcon} data-testid="modalClose">
             <CloseIcon type="primary" onClick={handleClose} />
           </div>
         </div>

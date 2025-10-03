@@ -20,7 +20,7 @@ type TInitialState = {
   error: string | null;
 };
 
-const initialState: TInitialState = {
+export const initialState: TInitialState = {
   order: null,
   createdOrder: null,
   fetchedOrder: null,
